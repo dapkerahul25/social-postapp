@@ -15,10 +15,22 @@ exports.insertPost = async (postData) => {
     })
 }
 
-exports.findAllPost = async () => {
+exports.findAllPost = async (searchData) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const result = await PostModel.find()
+            const { limit, pageCount } = searchData
+            const result = await PostModel.find().skip((pageCount-1 )* limit ).limit(limit)
+            resolve(result)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
+exports.findPostById = async (_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const result = await PostModel.findById({_id})
             resolve(result)
         } catch (error) {
             reject(error)

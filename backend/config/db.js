@@ -1,6 +1,6 @@
 const mongoose = require ( 'mongoose')
 mongoose.promise = require ( 'bluebird')
-let  dbUrl='mongodb://localhost:27017/socialPostDB' 
+let  dbUrl='mongodb+srv://ajaynawgire:Ajay0007@cluster0.cacc2.mongodb.net/socialBlogDB?retryWrites=true&w=majority' 
 
 mongoose.connect(dbUrl)
 

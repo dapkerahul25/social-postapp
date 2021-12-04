@@ -20,9 +20,12 @@ module.exports = (app) => {
     })
 
 
-    // Create Post 
-    app.post('/post', PostController.createPost)
+    // Create a Blog 
+    app.post('/blog', PostController.createPost)
 
-     // find all post 
-     app.get('/post/list', PostController.findAllPost)
+     // find all blogs 
+     app.post('/blog/list', PostController.findAllPost)
+
+     // find post by Id
+     app.get('/blogById/:id', PostController.findPostById)
 }

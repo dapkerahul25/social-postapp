@@ -37,7 +37,29 @@ module.exports = {
 
     findAllPost: async (req, res) => {
         try {
-            const data = await PostService.findAllPost()
+            const searchData = req.body
+            const data = await PostService.findAllPost(searchData)
+            return res.status(200).send({
+                message: `Post list get successfully`,
+                statusCode: 200,
+                status: true,
+                data: data
+            })
+
+        } catch (error) {
+            return res.status(500).send({
+                message: `Internal Server Error!`,
+                statusCode: 500,
+                status: false,
+                error
+            })
+        }
+    },
+
+    findPostById: async (req, res) => {
+        try {
+            const _id = req.params.id
+            const data = await PostService.findPostById(_id)
             return res.status(200).send({
                 message: `Post list get successfully`,
                 statusCode: 200,
